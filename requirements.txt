@@ -3,3 +3,4 @@ google-genai
 python-dotenv
 reportlab
 PyPDF2
+pypdf
