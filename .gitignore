@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+Career_Report.pdf
+progress.json
