@@ -1,4 +1,5 @@
 import os
+import json
 
 from dotenv import load_dotenv
 from google import genai
@@ -7,30 +8,64 @@ load_dotenv()
 
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-print("API KEY FOUND:", API_KEY is not None)
+if not API_KEY:
+    raise ValueError("GEMINI_API_KEY not found.")
 
 client = genai.Client(api_key=API_KEY)
 
 
-def ask_gemini(prompt):
+def ask_gemini(prompt: str, expect_json=False):
+    """
+    Sends a prompt to Gemini.
+
+    Parameters
+    ----------
+    prompt : str
+        Prompt for Gemini.
+
+    expect_json : bool
+        If True, automatically parses JSON.
+
+    Returns
+    -------
+    str | dict
+    """
+
     try:
-        print("====== CALLING GEMINI ======")
-        print(prompt[:200])
 
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt,
         )
 
-        print("RAW RESPONSE:")
-        print(response)
+        text = response.text.strip()
 
-        print("TEXT:")
-        print(response.text)
+        # Remove markdown fences if Gemini adds them
+        if text.startswith("```json"):
+            text = text.replace("```json", "", 1)
 
-        return response.text
+        if text.startswith("```"):
+            text = text.replace("```", "", 1)
+
+        text = text.replace("```", "").strip()
+
+        if expect_json:
+
+            return json.loads(text)
+
+        return text
+
+    except json.JSONDecodeError:
+        raise Exception("Gemini returned invalid JSON.")
 
     except Exception as e:
-        print("GEMINI ERROR:")
-        print(e)
-        return f"Error: {e}"
+
+        error = str(e)
+
+        if "RESOURCE_EXHAUSTED" in error:
+
+            raise Exception(
+                "Gemini API quota exceeded. Please wait a minute and try again."
+            )
+
+        raise Exception(error)
