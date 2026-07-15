@@ -1,32 +1,54 @@
 # 🚀 CareerCopilot AI
 
-CareerCopilot AI is an AI-powered career assistant that helps users improve their resumes and prepare for their dream jobs using Google Gemini.
+An AI-powered career coach that analyzes resumes, identifies skill gaps, creates personalized learning roadmaps, recommends portfolio projects, prepares interview questions, and suggests suitable job roles using Google Gemini.
 
-## ✨ Features
+---
+
+## 🌟 Features
 
 - 📄 Resume Analysis
 - 🎯 Skill Gap Detection
-- 📚 Personalized Learning Roadmap
+- 🛣 Personalized Learning Roadmaps (30, 60 & 90 Days)
 - 💼 Portfolio Project Recommendations
-- 🎤 Interview Preparation
-- ✨ Resume Improvement Suggestions
-- 💼 Job Recommendations
+- 🎤 Technical, HR & Behavioral Interview Preparation
+- ✨ Resume & ATS Optimization
+- 💼 AI-based Job Recommendations
+- 📊 Career Dashboard
+- 📄 Downloadable PDF Career Report
 - 📈 Learning Progress Tracker
-- 📄 Downloadable PDF Report
 
-## 🛠️ Tech Stack
+---
 
-- Python
+## 🖼 Screenshots
+
+(Add screenshots here after deployment.)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - Streamlit
-- Google Gemini API
-- ReportLab
-- PyPDF2
-- dotenv
+
+### Backend
+- Python
+
+### AI
+- Google Gemini 2.5 Flash
+
+### Libraries
+- streamlit
+- google-genai
+- python-dotenv
+- PyMuPDF
+- reportlab
+
+---
 
 ## 📂 Project Structure
 
 ```
-careercopilot-ai/
+CareerCopilot-AI/
 │
 ├── agents/
 ├── tools/
@@ -34,18 +56,26 @@ careercopilot-ai/
 ├── app.py
 ├── requirements.txt
 ├── README.md
-└── .env
+└── .gitignore
 ```
 
-## 🚀 Installation
+---
+
+## ⚙ Installation
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/CareerCopilot-AI.git
+git clone https://github.com/Suryanshu1218/CareerCopilot-AI.git
 ```
+
+Move into the project:
 
 ```bash
 cd CareerCopilot-AI
 ```
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -53,20 +83,39 @@ pip install -r requirements.txt
 
 Create a `.env` file:
 
-```
+```env
 GEMINI_API_KEY=YOUR_API_KEY
 ```
 
-Run:
+Run the app:
 
 ```bash
 streamlit run app.py
 ```
 
-## 📸 Screenshots
+---
 
-(Add screenshots here after uploading them.)
+## 🚀 Future Improvements
+
+- AI Resume Builder
+- Cover Letter Generator
+- LinkedIn Profile Analyzer
+- Mock Interview Simulator
+- Voice Interview Practice
+- Job Tracker Dashboard
+- Company-specific Interview Preparation
+- AI Career Chatbot
+
+---
 
 ## 👨‍💻 Author
 
-Suryanshu Singh
+**Suryanshu Singh**
+
+Built as an AI-powered career assistant using Google Gemini and Streamlit.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
